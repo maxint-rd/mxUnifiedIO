@@ -94,7 +94,9 @@ library: https://github.com/maxint-rd/mxUnifiedPCD8544_Nokia_5110_LCD
 For many libraries replacing the digitalWrite() call is sufficient.
 For end-users it can be handy to encapsulate the library in a class.
 Per convention the pin definition is done in the contstructor, whereas the begin()
-method can be used to set specific initialisation parameters (see example code above).
+method can be used to set specific initialisation parameters. The first parameter
+of the constructor should be a reference to the mxUnifiedIO expander object. The
+other parameters define the required (expanded) pins. (See example code above).
 
 BTW: if you have implemented your own device library, please let me know, so I can
 mention it in the documentation.
