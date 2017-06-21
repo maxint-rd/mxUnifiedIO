@@ -78,7 +78,7 @@ void loop()
 {
   display.invertDisplay(true);
   unio.digitalWrite(0, HIGH);
-  delayBlink(1000); 
+  delay(1000); 
   display.invertDisplay(false);
   unio.digitalWrite(0, LOW);
   delay(1000); 
