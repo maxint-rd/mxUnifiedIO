@@ -53,7 +53,7 @@ start with the Blink examples. Typically you first include the required header f
 
 Then you can instanciate the required library objects:
 ```c++
-mxUnifiedPCF8574 unio = mxUnifiedPCF8574(0x27, 2, 0);                // on ESP8266 you can also use software I2C
+mxUnifiedPCF8574 unio = mxUnifiedPCF8574(0x27, 2, 0);                // on ESP8266 you can other pins
 mxUnifiedPCD8544 display = mxUnifiedPCD8544(&unio, 7, 6, 5, 4, 2);   // best pins for the LCD expander
 ```
 
@@ -95,3 +95,6 @@ For many libraries replacing the digitalWrite() call is sufficient.
 For end-users it can be handy to encapsulate the library in a class.
 Per convention the pin definition is done in the contstructor, whereas the begin()
 method can be used to set specific initialisation parameters (see example code above).
+
+BTW: if you have implemented your own device library, please let me know, so I can
+mention it in the documentation.
