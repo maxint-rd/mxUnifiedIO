@@ -40,3 +40,58 @@ On the Arduino UNO, Nano and Pro Mini, these can be found on pins A4 and A5.
 On the ESP8266 the default pins are GPIO4 and GPIO5, but others can be
 selected too.
 See https://github.com/maxint-rd/mxUnifiedPCF8574 for more info.
+
+
+Code examples
+=============
+Each library comes with well commented and easy to read examples. It's easiest to
+start with the Blink examples. Typically you first include the required header files:
+```c++
+#include <mxUnifiedPCF8574.h>     // implies inclusion of <mxUnifiedIO.h>
+#include <mxUnifiedPCD8544.h>
+```
+
+Then you can instanciate the required library objects:
+```c++
+mxUnifiedPCF8574 unio = mxUnifiedPCF8574(0x27, 2, 0);                // on ESP8266 you can also use software I2C
+mxUnifiedPCD8544 display = mxUnifiedPCD8544(&unio, 7, 6, 5, 4, 2);   // best pins for the LCD expander
+```
+
+In your setup() function you call the required begin() methods:
+```c++
+void setup()
+{
+  unio.begin();     // initialize the I2C connection with default I2C speed. 
+  display.begin();  // regular begin() using default settings
+
+  // show some text
+  display.setContrast(50);
+  display.clearDisplay();   // clears the screen and buffer
+  display.println("Hello");
+  display.display();
+}
+```
+
+In your loop() you can do what you want, such as toggle a pin:
+```c++
+void loop()
+{
+  display.invertDisplay(true);
+  unio.digitalWrite(0, HIGH);
+  delayBlink(1000); 
+  display.invertDisplay(false);
+  unio.digitalWrite(0, LOW);
+  delay(1000); 
+}
+```
+
+
+Adding device specific libraries
+================================
+To make a library that uses mxUnifiedIO from an existing library is relatively
+easy. Take a look at the Nokia 5510 library which is derived from the Adafruit GFX
+library: https://github.com/maxint-rd/mxUnifiedPCD8544_Nokia_5110_LCD
+For many libraries replacing the digitalWrite() call is sufficient.
+For end-users it can be handy to encapsulate the library in a class.
+Per convention the pin definition is done in the contstructor, whereas the begin()
+method can be used to set specific initialisation parameters (see example code above).
