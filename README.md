@@ -13,6 +13,8 @@ Currently the following device specific libraries are supported:
 
 See the device or I/O expander specific documentation for more information on how to use this library.
 
+[![mxUnifiedIO library set illustration](https://github.com/maxint-rd/mxUnifiedIO/blob/master/documentation/libraries.png)]
+
 MCU pin abstraction
 ===================
 The mxUnifiedIO base class provides the basic functionality of the specific expander libraries.
