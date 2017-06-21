@@ -51,7 +51,7 @@ start with the Blink examples. Typically you first include the required header f
 #include <mxUnifiedPCD8544.h>
 ```
 
-Then you can instanciate the required library objects:
+Then you can instantiate the required library objects:
 ```c++
 mxUnifiedPCF8574 unio = mxUnifiedPCF8574(0x27, 2, 0);                // on ESP8266 you can other pins
 mxUnifiedPCD8544 display = mxUnifiedPCD8544(&unio, 7, 6, 5, 4, 2);   // best pins for the LCD expander
