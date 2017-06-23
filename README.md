@@ -6,7 +6,7 @@ multiple devices on I/O expanders or shift registers.
 
 Currently the following expanders are supported:
 - PCF8574 I2C I/O expander: https://github.com/maxint-rd/mxUnifiedPCF8574
-- 74HC595 shift-registers: https://github.com/maxint-rd/mxUnified74HC595
+- 74HC595 shift registers: https://github.com/maxint-rd/mxUnified74HC595
 
 Currently the following device specific libraries are supported:
 - Adafruit PCD8544 Nokia 5110 LCD: https://github.com/maxint-rd/mxUnifiedPCD8544_Nokia_5110_LCD
@@ -24,7 +24,7 @@ pin-numbering independant use by device specific libraries.
 Note: the current version supports digitalWrite(), digitalRead() and pinMode(). Currently shiftOut()
 and PWM using analogWrite() is not implemented.
 
-Using SPI shift-register
+Using SPI shift register
 ========================
 The (shared) SPI bus requires three data-lines to connect one or more shift
 registers (SS, MOSI and SCK).
