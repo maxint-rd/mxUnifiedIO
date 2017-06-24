@@ -35,7 +35,7 @@ void mxUnifiedIO::begin(void)
 	_aPins[6]=4;
 	_aPins[7]=5;
 #else
-	_aPins[0]=0;
+	_aPins[0]=10;
 	_aPins[1]=11;
 	_aPins[2]=12;
 	_aPins[3]=13;
