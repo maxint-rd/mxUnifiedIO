@@ -105,7 +105,7 @@ mention it in the documentation.
 
 Features & limitations
 ======================
-- The current version of this library supports ESP8266 and Atmel ATmega328 and ATmega168 MCUs. Other Atmel processors may work as well, but they've not been tested yet. For some MCUs the libraries will require modification. Please let me know if you've successfully used this library with other MCUs.
+- The current version of this library supports ESP8266 and Atmel ATmega328 and ATmega168 MCUs. Support for ATtiny85 was just added to the base library (but not yet for all other libraries). Other Atmel processors may work as well, but they've not been tested yet. For some MCUs the libraries will require modification. Please let me know if you've successfully used this library with other MCUs.
 - Currently the base mxUnifiedIO library provides abstration of digitalWrite(), digitalRead() and pinMode(). Other features such as pin interrupts, PWM and shiftOut() are not supported. The child libraries for the I2C I/O expander and for the shift register do support shiftOut().
 
 
