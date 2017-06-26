@@ -3,7 +3,11 @@
 mxUnifiedIO::mxUnifiedIO(void)
 {
 	_nConstr=1;
+#if defined(MXUNIFIED_ATTINY)
+	_nNumPins=5;
+#else
 	_nNumPins=8;
+#endif
 	_dataOut=0;
 }
 
@@ -34,6 +38,15 @@ void mxUnifiedIO::begin(void)
 	_aPins[5]=15;
 	_aPins[6]=4;
 	_aPins[7]=5;
+#elif defined(MXUNIFIED_ATTINY)
+	_aPins[0]=0;
+	_aPins[1]=1;
+	_aPins[2]=2;
+	_aPins[3]=3;
+	_aPins[4]=4;
+	_aPins[5]=99;
+	_aPins[6]=99;
+	_aPins[7]=99;
 #else
 	_aPins[0]=10;
 	_aPins[1]=11;

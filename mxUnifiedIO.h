@@ -12,6 +12,11 @@
   #include "pins_arduino.h"
 #endif
 
+//#if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny2313__) || defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny861__)  
+// TODO: currently  only tested __AVR_ATtiny85__ using attiny boarddefinitions by David A. Mellis, others might work too.
+#if defined(__AVR_ATtiny85__)
+	#define MXUNIFIED_ATTINY 85
+#endif
 
 class mxUnifiedIO
 {
