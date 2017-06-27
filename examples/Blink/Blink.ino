@@ -19,7 +19,15 @@ mxUnifiedIO unio = mxUnifiedIO();   // create the object to access the expanded 
 // mxUnified74HC595 unio = mxUnified74HC595();              // 74HC595 expander using hardware SPI pins, no cascading
 // mxUnifiedPCF8574 unio = mxUnifiedPCF8574();              // PCF8574 expander using hardware I2C pins
 
-
+#if defined(__AVR_ATtiny85__)
+  // ATtiny85 has no regular hardware serial. You can use TinyDebugSerial (TX=3) or software serial
+  // see also http://www.ernstc.dk/arduino/tinycom.html
+  #include <SoftwareSerial.h>
+  SoftwareSerial mySerial(4, 3); // RX, TX
+  //TinyDebugSerial mySerial= TinyDebugSerial(); 
+  #define Serial mySerial
+  #define LED_BUILTIN 1
+#endif
 
 void setup()
 {
@@ -40,4 +48,3 @@ void loop()
   unio.digitalWrite(1, LOW);   // set expanded pin 3 low
   delay(250);
 }
-
