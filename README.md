@@ -10,6 +10,7 @@ Currently the following expanders are supported:
 
 Currently the following device specific libraries are supported:
 - Adafruit PCD8544 Nokia 5110 LCD: https://github.com/maxint-rd/mxUnifiedPCD8544_Nokia_5110_LCD
+- e.dentifier2 LCD panel: https://github.com/maxint-rd/mxUnifiedLcdEdentifier2 (uses Adafruit GFX)
 
 See the device or I/O expander specific documentation and the documentation below for more information on how to use this library.
 This picture illustrates the main features of mxUnifiedIO:
@@ -106,7 +107,7 @@ mention it in the documentation.
 Features & limitations
 ======================
 - The current version of this library supports ESP8266 and Atmel ATmega328 and ATmega168 MCUs. Support for ATtiny85 was just added to the base library (but not yet for all other libraries). Other Atmel processors may work as well, but they've not been tested yet. For some MCUs the libraries will require modification. Please let me know if you've successfully used this library with other MCUs.
-- Currently the base mxUnifiedIO library provides abstration of digitalWrite(), digitalRead() and pinMode(). Other features such as pin interrupts, PWM and shiftOut() are not supported. The child libraries for the I2C I/O expander and for the shift register do support shiftOut().
+- Currently the base mxUnifiedIO library provides abstration of digitalWrite(), digitalRead() and pinMode(). Other features such as pin interrupts, PWM and shiftOut() are not supported. The child libraries for the I2C I/O expander and for the shift register do support shiftOut(), but currently without the bitOrder parameter (MSBFIRST/LSBFIRST).
 
 
 Disclaimer
