@@ -71,6 +71,12 @@ void mxUnifiedIO::begin(void)
 #endif
 }
 
+uint8_t mxUnifiedIO::getNumPins(void)
+{		// get the number of pins that are expanded
+	return(_nNumPins);
+}
+
+
 void mxUnifiedIO::setBit(uint8_t nPin, uint8_t nValue)
 {	// set the status of a pin (without actually writing it or ending the transmission yet)
 	//uint8_t uDataOld=_dataOut;		// to return dirty flag when changed
@@ -80,8 +86,10 @@ void mxUnifiedIO::setBit(uint8_t nPin, uint8_t nValue)
 }
 
 void mxUnifiedIO::set8Bits(uint8_t nValue)
-{
-	_dataOut=nValue;
+{	// set bits 0-7 to the specified value (leave upper bits unaltered
+	//_dataOut=nValue;
+	_dataOut&=0xFFFFFF00;
+	_dataOut|=nValue;
 }
 
 

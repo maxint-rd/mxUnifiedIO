@@ -29,6 +29,7 @@ class mxUnifiedIO
   // These MAY be overridden by the subclass to provide device-specific
   // optimized code.  Otherwise 'generic' versions are used.
   virtual void begin(void);
+  virtual uint8_t getNumPins(void);
   virtual void setBit(uint8_t nPin, uint8_t nValue);
   virtual void set8Bits(uint8_t nValue);
   virtual uint8_t getBit(uint8_t nPin);
@@ -39,14 +40,14 @@ class mxUnifiedIO
   virtual void startTransmission(void);
   virtual void endTransmission(void);
  	
- 	void digitalWrite(uint8_t nPin, uint8_t nVal);
- 	void digitalWrite8(uint8_t nVal);
- 	int digitalRead(uint8_t nPin);
- 	void pinMode(uint8_t nPin, uint8_t nMode);
+ 	virtual void digitalWrite(uint8_t nPin, uint8_t nVal);
+ 	virtual void digitalWrite8(uint8_t nVal);
+ 	virtual int digitalRead(uint8_t nPin);
+ 	virtual void pinMode(uint8_t nPin, uint8_t nMode);
 
  protected:
 // 	uint8_t _dataOut;
- 	uint32_t _dataOut;
+ 	uint32_t _dataOut;		// current version supports max of 32 expanded pins
  	uint8_t _nNumPins;
  	uint8_t _nConstr;
 
