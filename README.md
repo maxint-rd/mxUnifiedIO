@@ -5,7 +5,7 @@ mxUnifiedIO is a set of libraries for Arduino (IDE version 1.6 and up) that faci
 multiple devices on I/O expanders or shift registers.
 
 Currently the following expanders are supported:
-- PCF8574 I2C I/O expander: https://github.com/maxint-rd/mxUnifiedPCF8574
+- PCF8574 and PCF8575 I2C I/O expanders: https://github.com/maxint-rd/mxUnifiedPCF8574
 - 74HC595 shift registers: https://github.com/maxint-rd/mxUnified74HC595
 
 Currently the following device specific libraries are supported:
