@@ -17,6 +17,13 @@
 #if defined(__AVR_ATtiny85__)
 	#define MXUNIFIED_ATTINY 85
 #endif
+#if defined(__AVR_ATtiny13__)
+	#define MXUNIFIED_ATTINY 13
+#endif
+
+#define MXUNIFIED_DEFAULT_PINS 0
+#define MXUNIFIED_PINS_2TO9 2
+#define MXUNIFIED_PINS_2TO9_13 3
 
 class mxUnifiedIO
 {
@@ -28,7 +35,7 @@ class mxUnifiedIO
 
   // These MAY be overridden by the subclass to provide device-specific
   // optimized code.  Otherwise 'generic' versions are used.
-  virtual void begin(void);
+  virtual void begin(uint8_t nPinSelection=MXUNIFIED_DEFAULT_PINS);
   virtual uint8_t getNumPins(void);
   virtual void setBit(uint8_t nPin, uint8_t nValue);
   virtual void set8Bits(uint8_t nValue);
@@ -41,6 +48,7 @@ class mxUnifiedIO
   virtual void endTransmission(void);
  	
  	virtual void digitalWrite(uint8_t nPin, uint8_t nVal);
+ 	//virtual void digitalWrite(int nPin, uint8_t nVal){digitalWrite((uint8_t)nPin, nVal);}
  	virtual void digitalWrite8(uint8_t nVal);
  	virtual int digitalRead(uint8_t nPin);
  	virtual void pinMode(uint8_t nPin, uint8_t nMode);

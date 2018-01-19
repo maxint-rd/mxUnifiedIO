@@ -11,7 +11,7 @@ mxUnifiedIO::mxUnifiedIO(void)
 	_dataOut=0;
 }
 
-void mxUnifiedIO::begin(void)
+void mxUnifiedIO::begin(uint8_t nPinSelection)		// uint8_t nPinSelection=MXUNIFIED_DEFAULT_PINS
 {	// Overwrite in subclasses if desired!
 	// Call without parameters assumes using the default pins.
 	// For the base mxUnifiedIO class the default pins are tied directly to the MCU pins
@@ -57,6 +57,12 @@ void mxUnifiedIO::begin(void)
 	_aPins[6]=6;
 	_aPins[7]=7;
 #endif
+	if(nPinSelection==MXUNIFIED_PINS_2TO9 || nPinSelection==MXUNIFIED_PINS_2TO9_13)
+		for(uint8_t n=0; n<=7; n++)
+			_aPins[n]=2+n;
+	if(nPinSelection==MXUNIFIED_PINS_2TO9_13)
+			_aPins[1]=13;
+		
 	for(uint8_t n=0; n<=7; n++)
 		::pinMode(_aPins[n], OUTPUT);
 
@@ -105,10 +111,25 @@ uint8_t mxUnifiedIO::get8Bits(void)
 	
 void mxUnifiedIO::send8Bits(bool fClosedTransmission)		// default: fClosedTransmission=true
 {    // Overwrite in subclasses if desired!
+	uint8_t uByte=(uint8_t)_dataOut;
+#if(_MXUNIFIEDIO_DEBUG)
+  Serial.print(F("mxUnifiedIO::send8Bits("));
+  Serial.print(_dataOut);
+  Serial.print(F(", 0x"));
+  Serial.print(uByte, HEX);
+  Serial.println(F(")"));
+#endif
+
+	for(uint8_t n=0; n<=7; n++)
+	{
+		::digitalWrite(_aPins[n], uByte&0x01);		// note: using digitalWrite without cast or explicit this pointer may call override of original digitalWrite
+		uByte>>=1;
+	}
 }
 
 void mxUnifiedIO::sendBits(void)
 {    // Overwrite in subclasses if desired!
+	send8Bits();
 }
 
 void mxUnifiedIO::shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t value)
