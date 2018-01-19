@@ -122,7 +122,7 @@ void mxUnifiedIO::send8Bits(bool fClosedTransmission)		// default: fClosedTransm
 
 	for(uint8_t n=0; n<=7; n++)
 	{
-		::digitalWrite(_aPins[n], uByte&0x01);		// note: using digitalWrite without cast or explicit this pointer may call override of original digitalWrite
+		::digitalWrite(_aPins[n], uByte&0x01);
 		uByte>>=1;
 	}
 }
@@ -158,6 +158,7 @@ void mxUnifiedIO::digitalWrite(uint8_t nPin, uint8_t nVal)
 	if (nPin >= _nNumPins) return;
 	setBit(nPin, nVal);
 	::digitalWrite(_aPins[nPin], nVal);		// call the regular digitalWrite using the global scope resolution operator
+	// TODO: use MCU-specific pin manipulation to provide faster switching
 }	
 
 void mxUnifiedIO::digitalWrite8(uint8_t nVal)

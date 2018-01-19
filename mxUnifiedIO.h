@@ -48,13 +48,11 @@ class mxUnifiedIO
   virtual void endTransmission(void);
  	
  	virtual void digitalWrite(uint8_t nPin, uint8_t nVal);
- 	//virtual void digitalWrite(int nPin, uint8_t nVal){digitalWrite((uint8_t)nPin, nVal);}
  	virtual void digitalWrite8(uint8_t nVal);
  	virtual int digitalRead(uint8_t nPin);
  	virtual void pinMode(uint8_t nPin, uint8_t nMode);
 
  protected:
-// 	uint8_t _dataOut;
  	uint32_t _dataOut;		// current version supports max of 32 expanded pins
  	uint8_t _nNumPins;
  	uint8_t _nConstr;
