@@ -11,6 +11,7 @@ Currently the following expanders are supported:
 Currently the following device specific libraries are supported:
 - Adafruit PCD8544 Nokia 5110 LCD: https://github.com/maxint-rd/mxUnifiedPCD8544_Nokia_5110_LCD
 - e.dentifier2 LCD panel: https://github.com/maxint-rd/mxUnifiedLcdEdentifier2 (uses Adafruit GFX)
+- SN76489 complex sound generator: https://github.com/maxint-rd/mxUnifiedSN76489
 
 Watch the YouTube videos [Made: More pins for Arduino and ESP8266](https://youtu.be/40Ssl2K_jfo) and [Made: Using a salvaged LCD](https://youtu.be/NXtHkjaIge0) to see it all in action.
 Read the device or I/O expander specific documentation and the documentation below for more information on how to use this library.
