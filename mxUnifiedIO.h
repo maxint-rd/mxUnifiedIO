@@ -17,6 +17,9 @@
 #if defined(__AVR_ATtiny85__)
 	#define MXUNIFIED_ATTINY 85
 #endif
+#if defined(__AVR_ATtiny44__)
+	#define MXUNIFIED_ATTINY 44
+#endif
 #if defined(__AVR_ATtiny13__)
 	#define MXUNIFIED_ATTINY 13
 #endif

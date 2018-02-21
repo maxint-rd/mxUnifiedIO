@@ -3,7 +3,7 @@
 mxUnifiedIO::mxUnifiedIO(void)
 {
 	_nConstr=1;
-#if defined(MXUNIFIED_ATTINY)
+#if defined(MXUNIFIED_ATTINY) && (MXUNIFIED_ATTINY==13 || MXUNIFIED_ATTINY==85)
 	_nNumPins=5;
 #else
 	_nNumPins=8;
@@ -44,9 +44,9 @@ void mxUnifiedIO::begin(uint8_t nPinSelection)		// uint8_t nPinSelection=MXUNIFI
 	_aPins[2]=2;
 	_aPins[3]=3;
 	_aPins[4]=4;
-	_aPins[5]=99;
-	_aPins[6]=99;
-	_aPins[7]=99;
+	_aPins[5]=5;
+	_aPins[6]=6;
+	_aPins[7]=7;
 #else
 	_aPins[0]=10;
 	_aPins[1]=11;
