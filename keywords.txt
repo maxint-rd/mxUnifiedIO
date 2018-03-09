@@ -20,6 +20,8 @@ setBit	KEYWORD2
 getBit	KEYWORD2
 get8Bits	KEYWORD2
 send8Bits	KEYWORD2
+getNumPins	KEYWORD2
+specifyPins	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
