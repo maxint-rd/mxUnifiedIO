@@ -38,6 +38,7 @@ class mxUnifiedIO
 
   // These MAY be overridden by the subclass to provide device-specific
   // optimized code.  Otherwise 'generic' versions are used.
+  virtual void specifyPins(uint8_t *arrPins);
   virtual void begin(uint8_t nPinSelection=MXUNIFIED_DEFAULT_PINS);
   virtual uint8_t getNumPins(void);
   virtual void setBit(uint8_t nPin, uint8_t nValue);

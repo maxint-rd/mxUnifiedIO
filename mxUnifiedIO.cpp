@@ -9,13 +9,9 @@ mxUnifiedIO::mxUnifiedIO(void)
 	_nNumPins=8;
 #endif
 	_dataOut=0;
-}
 
-void mxUnifiedIO::begin(uint8_t nPinSelection)		// uint8_t nPinSelection=MXUNIFIED_DEFAULT_PINS
-{	// Overwrite in subclasses if desired!
-	// Call without parameters assumes using the default pins.
-	// For the base mxUnifiedIO class the default pins are tied directly to the MCU pins
-
+	// Set default MCU pins
+	// Can be redfined using mxUnifiedIO::specifyPins(uint8_t *arrPins)
 	// The standard pin definition allows the following devices connected as example
 	// ATmega328, PCD8544+Max7219 panel:
 	//  P3;  D13 - led
@@ -57,13 +53,26 @@ void mxUnifiedIO::begin(uint8_t nPinSelection)		// uint8_t nPinSelection=MXUNIFI
 	_aPins[6]=6;
 	_aPins[7]=7;
 #endif
+}
+
+void mxUnifiedIO::specifyPins(uint8_t *arrPins)
+{	// use these specific MCU pins to map to virtual expanded pins
+	for(uint8_t n=0; n<_nNumPins; n++)
+		_aPins[n]=arrPins[n];
+}
+
+void mxUnifiedIO::begin(uint8_t nPinSelection)		// uint8_t nPinSelection=MXUNIFIED_DEFAULT_PINS
+{	// Overwrite in subclasses if desired!
+	// Call without parameters assumes using the default pins.
+	// For the base mxUnifiedIO class the default pins are tied directly to the MCU pins
+
 	if(nPinSelection==MXUNIFIED_PINS_2TO9 || nPinSelection==MXUNIFIED_PINS_2TO9_13)
 		for(uint8_t n=0; n<=7; n++)
 			_aPins[n]=2+n;
 	if(nPinSelection==MXUNIFIED_PINS_2TO9_13)
 			_aPins[1]=13;
 		
-	for(uint8_t n=0; n<=7; n++)
+	for(uint8_t n=0; n<_nNumPins; n++)
 		::pinMode(_aPins[n], OUTPUT);
 
 #if(_MXUNIFIEDIO_DEBUG)
