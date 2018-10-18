@@ -12,6 +12,14 @@
   #include "pins_arduino.h"
 #endif
 
+#if !defined(max)
+// MMOLE 181018:
+// min, max are no macro in ESP core 2.3.9 libraries, see https://github.com/esp8266/Arduino/issues/398
+#define min(a,b) ((a)<(b)?(a):(b))
+#define max(a,b) ((a)>(b)?(a):(b))
+#endif
+
+
 //#if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny2313__) || defined(__AVR_ATtiny4313__) || defined(__AVR_ATtiny861__)  
 // TODO: currently  only tested __AVR_ATtiny85__ using attiny boarddefinitions by David A. Mellis, others might work too.
 #if defined(__AVR_ATtiny85__)
